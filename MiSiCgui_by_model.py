@@ -34,12 +34,8 @@ import models
 
 gdict = {"gDir":"", "gfilename" : os.path.join("~", "out.tif"), "gdims" : None, "width" : None, "gnoise" : None, "gthresh":220, "ginvert" : None, "gpos" : None, "gsave_all" : None, "gchannel":0}
 
-
-#[ basename(f)[:-3] for f in modules if isfile(f) and not f.endswith('__init__.py')]
 modpaths = glob.glob(join(dirname(__file__), "models", "*.py"))
 MODELS = [ basename(f)[:-3] for f in modpaths if isfile(f) and not f.endswith('__init__.py')]
-
-#misic = MiSiC()
 
 mmodd = "misic_synthetic_bf"
 amodel = "models."+ mmodd
@@ -198,7 +194,7 @@ def main():
         # keep the dropdown menus in the gui in sync with the layer model
         #viewer.layers.events.changed.connect(lambda x: gui.refresh_choices("layer"))
         viewer.layers.events.changed.connect(updatelayer)
-        
+
 
 
         @magicgui(
@@ -265,7 +261,7 @@ def main():
 
         
         @magicgui(auto_call=True, models_list={"choices": MODELS})
-        def sel_model(models_list=MODELS[4], channel = 0) :
+        def sel_model(models_list=MODELS[0], channel = 0) :
             global misic
             gdict["gchannel"] = channel
             amodel = "models."+models_list
