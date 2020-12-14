@@ -27,7 +27,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from MiSiC.MiSiC import *
-import MiSiCgui
+#import MiSiCgui
 
 import models
 #from models import old_model
