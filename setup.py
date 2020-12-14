@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://imm.cnrs.fr",
     packages=setuptools.find_packages(),
-    #packages=['MiSiCmodels'],
+    packages=['MiSiCmodels'],
     package_dir={'MiSiCmodels': '.'},
     py_modules = ['utils'],
     include_package_data=True,
@@ -28,7 +28,7 @@ setuptools.setup(
     #data_files=[('images', ['images/screen1.png'])],
     dependency_links=['MiSiC @ git+https://github.com/pswapnesh/MiSiC.git'],
     entry_points = {
-        'console_scripts': ['MODELS=MiSiCgui_by_model:main'],
+        'console_scripts': ['MODELS=.MiSiCgui_by_model:main'],
     },
     classifiers=[
         "Programming Language :: Python :: 3",
