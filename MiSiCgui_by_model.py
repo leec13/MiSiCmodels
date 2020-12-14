@@ -37,7 +37,7 @@ gdict = {"gDir":"", "gfilename" : os.path.join("~", "out.tif"), "gdims" : None, 
 modpaths = glob.glob(join(dirname(__file__), "models", "*.py"))
 MODELS = [ basename(f)[:-3] for f in modpaths if isfile(f) and not f.endswith('__init__.py')]
 
-mmodd = "misic_synthetic_bf"
+mmodd = MODELS[0]
 amodel = "models."+ mmodd
 currentModel = importlib.import_module(amodel)
 
