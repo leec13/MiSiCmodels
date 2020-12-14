@@ -12,9 +12,9 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://imm.cnrs.fr",
-    #packages=setuptools.find_packages(),
-    packages=['MiSiCmodels'],
-    package_dir={'MiSiCmodels': 'MiSiCmodels'},
+    packages=setuptools.find_packages(),
+    #packages=['MiSiCmodels'],
+    package_dir={'MiSiCmodels': '.'},
     py_modules = ['utils'],
     include_package_data=True,
     install_requires=[
