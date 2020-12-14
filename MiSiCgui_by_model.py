@@ -185,7 +185,7 @@ def main():
                 return seg_img(img, scale=round(10/mean_width, 2), noise=noise, invert=PhaseContrast, frame = viewer.dims.point[0], save=process_all)
         
 
-        viewer.grid_view()
+        #viewer.grid_view()
         # instantiate the widget
         gui = image_mask.Gui()
         # add our new widget to the napari viewer
@@ -277,7 +277,7 @@ def main():
         
 
             
-        viewer.grid_view()
+        #viewer.grid_view()
 
 
 if __name__ == "__main__":
