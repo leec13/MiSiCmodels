@@ -14,7 +14,7 @@ setuptools.setup(
     url="https://imm.cnrs.fr",
     #packages=setuptools.find_packages(),
     packages=['MiSiCmodels', 'models'],
-    package_dir={'MiSiCmodels': '.', 'models': './models'},
+    package_dir={'MiSiCmodels': './MiSiCmodels', 'models': './models'},
     py_modules = ['utils'],
     include_package_data=True,
     install_requires=[
