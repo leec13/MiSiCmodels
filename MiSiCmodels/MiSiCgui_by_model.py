@@ -34,8 +34,10 @@ import models
 
 gdict = {"gDir":"", "gfilename" : os.path.join("~", "out.tif"), "gdims" : None, "width" : None, "gnoise" : None, "gthresh":220, "ginvert" : None, "gpos" : None, "gsave_all" : None, "gchannel":0}
 
-p = Path(__file__).parents[0]
-modpaths = glob.glob(p, "models", "*.py"))
+p = Path(__file__).parents[1]
+p = join(p, "models")
+
+modpaths = glob.glob(join(Path(p), "*.py"))
 
 MODELS = [ basename(f)[:-3] for f in modpaths if isfile(f) and not f.endswith('__init__.py')]
 
