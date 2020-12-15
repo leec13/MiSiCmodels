@@ -28,7 +28,7 @@ setuptools.setup(
     #data_files=[('images', ['images/screen1.png'])],
     dependency_links=['MiSiC @ git+https://github.com/pswapnesh/MiSiC.git'],
     entry_points = {
-        'console_scripts': ['MODELS=MiSiCmodels.MiSiCgui_by_model:main'],
+        'console_scripts': ['MODELS=MiSiCgui_by_model:main'],
     },
     classifiers=[
         "Programming Language :: Python :: 3",
