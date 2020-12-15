@@ -4,6 +4,7 @@ import warnings
 import os, sys
 from os.path import dirname, basename, isfile, join
 import importlib
+from pathlib import Path
 
 import glob
 from pathlib import Path
@@ -30,11 +31,12 @@ from MiSiC.MiSiC import *
 #import MiSiCgui
 
 import models
-#from models import old_model
 
 gdict = {"gDir":"", "gfilename" : os.path.join("~", "out.tif"), "gdims" : None, "width" : None, "gnoise" : None, "gthresh":220, "ginvert" : None, "gpos" : None, "gsave_all" : None, "gchannel":0}
 
-modpaths = glob.glob(join(dirname(__file__), "models", "*.py"))
+p = Path(__file__).parents[0]
+modpaths = glob.glob(p, "models", "*.py"))
+
 MODELS = [ basename(f)[:-3] for f in modpaths if isfile(f) and not f.endswith('__init__.py')]
 
 mmodd = MODELS[0]
