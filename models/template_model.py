@@ -1,6 +1,6 @@
 
-#from tensorflow.keras.models import load_model
-#from tensorflow.keras.utils import get_file
+from tensorflow.keras.models import load_model
+from tensorflow.keras.utils import get_file
 
 import numpy as np
 
@@ -11,13 +11,13 @@ import numpy as np
 
 #import matplotlib.pyplot as plt
 
-#from MiSiC.utils import *
+from MiSiC.utils import *
 #from utils_gui import *
 
 #class name is mandatdatory
 class SegModel():
     def __init__(self):
-        pass
+        self.model = None
     
     #segment function is manadatory
     def segment(self,im):
