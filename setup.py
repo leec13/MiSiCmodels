@@ -15,7 +15,7 @@ setuptools.setup(
     #packages=setuptools.find_packages(),
     packages=['MiSiCmodels', 'models'],
     package_dir={'MiSiCmodels': 'MiSiCmodels', 'models': 'models'},
-    py_modules = ['utils', 'gui_utils'],
+    py_modules = ['utils', 'gui_utils', 'models.*'],
     include_package_data=True,
     install_requires=[
         'PyQt5',
