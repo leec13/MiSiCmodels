@@ -13,9 +13,9 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://imm.cnrs.fr",
     #packages=setuptools.find_packages(),
-    packages=['MiSiCmodels'],
-    package_dir={'MiSiCmodels': 'MiSiCmodels'},
-    py_modules = ['utils', 'gui_utils'],
+    packages=['MiSiCmodels', 'models'],
+    package_dir={'MiSiCmodels': 'MiSiCmodels', 'models':'models'},
+    py_modules = ['utils', 'gui_utils', 'models.*'],
     include_package_data=True,
     install_requires=[
         'PyQt5',
