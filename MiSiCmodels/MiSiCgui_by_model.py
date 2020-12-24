@@ -36,14 +36,13 @@ gdict = {"gDir":"", "gfilename" : os.path.join("~", "out.tif"), "gdims" : None, 
 
 p = Path(__file__).parents[1]
 p = join(p, "models")
-p = "/Users/leon/ownCloud/MacrosDropBox/pytoapp/MiSiCmodels/models/"
 modpaths = glob.glob(join(Path(p), "*.py"))
 
 MODELS = [ basename(f)[:-3] for f in modpaths if isfile(f) and not f.endswith('__init__.py')]
 
 mmodd = MODELS[0]
-#amodel = "models."+ mmodd
-mmodd = modpaths
+modpath = modpaths[MODELS.index("misic_synthetic_bf")]
+amodel = "models."+ mmodd
 currentModel = importlib.import_module(amodel)
 
 misic = currentModel.SegModel()
@@ -132,6 +131,14 @@ def main():
             gdict["gfilename"] = os.path.join(apath, viewer.layers[0].name)
             print("apres",gdict["gfilename"])
         
+        def loadmodel(apath):   
+            print("model=",apath)
+            global misic
+            currentModel = importlib.import_module(apath)
+            misic = currentModel.SegModel()
+            return None
+            
+        
         def changelabels(thresh):
             #& ("seg" not in laynames)
             gui1.value = thresh
@@ -147,8 +154,7 @@ def main():
                 viewer.add_labels(label_image, name="seg")
                 gdict["gthresh"] = thresh
         
-        def setModel(namemodel) :
-            print(namemodel)
+
 
 
 
@@ -264,21 +270,30 @@ def main():
         viewer.window.add_dock_widget(gui2, area="right")
         gui2.filename_changed.connect(defaultpath)
 
-        
-        @magicgui(auto_call=True, models_list={"choices": MODELS})
-        def sel_model(models_list=MODELS[0], channel = 0) :
-            global misic
+        @magicgui(filename={"mode": "r"})
+        def modelpicker(filename=Path("~"), channel = 0):
             gdict["gchannel"] = channel
-            #amodel = "models."+models_list
-            currentModel = importlib.import_module(amodel)
-            #print(currentModel)
-            #modpath = '/Users/leon/Desktop/Equipes_Local/SP/models/h5/MiSiDC04082020.h5'
-            modpath = modpaths[MODELS.index(models_list)]
-            misic = currentModel.SegModel()
-            print(models_list)
-            return None
-        gui6 = sel_model.Gui(show = True)
-        viewer.window.add_dock_widget(gui6, area="right")
+            return filename
+        # instantiate the widget
+        gui22 = modelpicker.Gui(show=True)
+        viewer.window.add_dock_widget(gui22, area="right")
+        gui22.filename_changed.connect(loadmodel)
+
+        
+        # @magicgui(auto_call=True, models_list={"choices": MODELS})
+        # def sel_model(models_list=MODELS[0], channel = 0) :
+        #     global misic
+        #     gdict["gchannel"] = channel
+        #     #amodel = "models."+models_list
+        #     currentModel = importlib.import_module(amodel)
+        #     #print(currentModel)
+        #     #modpath = '/Users/leon/Desktop/Equipes_Local/SP/models/h5/MiSiDC04082020.h5'
+        #     modpath = modpaths[MODELS.index(models_list)]
+        #     misic = currentModel.SegModel()
+        #     print(models_list)
+        #     return None
+        # gui6 = sel_model.Gui(show = True)
+        # viewer.window.add_dock_widget(gui6, area="right")
         
 
             
