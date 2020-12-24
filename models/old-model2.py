@@ -17,7 +17,7 @@ from MiSiC.utils import *
 class SegModel():
     def __init__(self):
         #self.size = 256
-        #self.scalesvals = [1,1.5,2.0]
+        self.scalesvals = [1,1.5,2.0]
         #self.model = load_model(model_name)
         #model_path = get_file(
         #    'old-model.txt',
@@ -25,7 +25,7 @@ class SegModel():
         self.model = None
     
     def preprocess(self,im):
-        # n = len(self.scalesvals)
+        n = len(self.scalesvals)
         # sh = np.zeros((im.shape[0],im.shape[1],n))
         
         # if np.max(im) ==0:

@@ -36,13 +36,14 @@ gdict = {"gDir":"", "gfilename" : os.path.join("~", "out.tif"), "gdims" : None, 
 
 p = Path(__file__).parents[1]
 p = join(p, "models")
-
+p = "/Users/leon/ownCloud/MacrosDropBox/pytoapp/MiSiCmodels/models/"
 modpaths = glob.glob(join(Path(p), "*.py"))
 
 MODELS = [ basename(f)[:-3] for f in modpaths if isfile(f) and not f.endswith('__init__.py')]
 
 mmodd = MODELS[0]
-amodel = "models."+ mmodd
+#amodel = "models."+ mmodd
+mmodd = modpaths
 currentModel = importlib.import_module(amodel)
 
 misic = currentModel.SegModel()
@@ -268,7 +269,7 @@ def main():
         def sel_model(models_list=MODELS[0], channel = 0) :
             global misic
             gdict["gchannel"] = channel
-            amodel = "models."+models_list
+            #amodel = "models."+models_list
             currentModel = importlib.import_module(amodel)
             #print(currentModel)
             #modpath = '/Users/leon/Desktop/Equipes_Local/SP/models/h5/MiSiDC04082020.h5'
