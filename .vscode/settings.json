@@ -3,5 +3,6 @@
         "origin",
         "upstream",
         "master"
-    ]
+    ],
+    "python.pythonPath": "/Users/leon/opt/anaconda3/envs/MiSiCmodels/bin/python"
 }
