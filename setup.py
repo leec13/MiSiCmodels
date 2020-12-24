@@ -13,9 +13,9 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://imm.cnrs.fr",
     #packages=setuptools.find_packages(),
-    packages=['MiSiCmodels', 'models'],
-    package_dir={'MiSiCmodels': 'MiSiCmodels', 'models': 'models'},
-    py_modules = ['utils', 'gui_utils', 'models.*'],
+    packages=['MiSiCmodels'],
+    package_dir={'MiSiCmodels': 'MiSiCmodels'},
+    py_modules = ['utils', 'gui_utils'],
     include_package_data=True,
     install_requires=[
         'PyQt5',
@@ -28,7 +28,7 @@ setuptools.setup(
     #data_files=[('images', ['images/screen1.png'])],
     dependency_links=['MiSiC @ git+https://github.com/pswapnesh/MiSiC.git'],
     entry_points = {
-        'console_scripts': ['MODELS=MiSiCgui_by_model:main'],
+        'console_scripts': ['MODELS=MiSiCmodels.MiSiCgui_by_model:main'],
     },
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -37,4 +37,4 @@ setuptools.setup(
     ],
     python_requires='>=3.7',
 )
-#upddate2
+#upddate2, , 'models.*'
