@@ -4,6 +4,7 @@ import warnings
 import os, sys
 from os.path import dirname, basename, isfile, join
 import importlib
+import importlib.util
 from pathlib import Path
 
 import glob
@@ -136,7 +137,10 @@ def main():
         def loadmodel(apath):   
             print("model=",apath)
             global misic
-            currentModel = importlib.import_module(apath)
+            spec = importlib.util.spec_from_file_location("module.name", apath)
+            currentModel = importlib.util.module_from_spec(spec)
+            #currentModel = importlib.import_module(apath)
+            spec.loader.exec_module(currentModel)
             misic = currentModel.SegModel()
             return None
             
@@ -264,22 +268,22 @@ def main():
         viewer.window.add_dock_widget(gui3, area="right")
         gui3.called.connect(lambda result: gui3.set_widget("mean_width", result))
 
-        @magicgui(filename={"mode": "existing_directory"})
-        def filepicker(filename=Path("~")):
-            return filename
+        @magicgui(default_dir={"mode": "existing_directory"})
+        def filepicker(default_dir=Path("~")):
+            return default_dir
         # instantiate the widget
         gui2 = filepicker.Gui(show=True)
         viewer.window.add_dock_widget(gui2, area="right")
-        gui2.filename_changed.connect(defaultpath)
+        gui2.default_dir_changed.connect(defaultpath)
 
-        @magicgui(filename={"mode": "r"})
-        def modelpicker(filename=Path("~"), channel = 0):
+        @magicgui(auto_call=True, model_file={"mode": "r"})
+        def modelpicker(model_file=Path("~"), channel = 0):
             gdict["gchannel"] = channel
-            return filename
+            return model_file
         # instantiate the widget
         gui22 = modelpicker.Gui(show=True)
         viewer.window.add_dock_widget(gui22, area="right")
-        gui22.filename_changed.connect(loadmodel)
+        gui22.model_file_changed.connect(loadmodel)
 
         
         # @magicgui(auto_call=True, models_list={"choices": MODELS})
