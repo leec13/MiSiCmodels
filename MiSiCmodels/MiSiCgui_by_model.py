@@ -13,6 +13,7 @@ from pathlib import Path
 from skimage.io import imsave,imread
 import skimage.io
 from skimage.measure import label
+from skimage.transform import rescale, resize
 
 import tiffile as tiffile
 import numpy as np
@@ -28,8 +29,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from MiSiC.MiSiC import *
+#from MiSiC.MiSiC import *
 #import MiSiCgui
+from MiSiCmodels.utils import *
 
 import models
 
